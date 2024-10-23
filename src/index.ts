@@ -36,7 +36,7 @@ const sleep = async (ms: number): Promise<void> => await new Promise(resolve => 
 
     })
 
-    await sleep(2000) // с плохим интернет соединением не успивает переключить регион 
+    await sleep(4000) // с плохим интернет соединением не успивает переключить регион 
     //так как там есть уведомление о карте лояльности которое тут же закрывает нажатое окно 
     // это  можно дорабатывать но не в рамках тех задания
 
@@ -48,6 +48,7 @@ const sleep = async (ms: number): Promise<void> => await new Promise(resolve => 
             const $ = cheerio.load(content)
             const uls = $('ul')
             const regionULElement: any[] = []
+
             $(uls).each((index, element) => {
                 const className = $(element).attr('class') as string; // Получаем имя класса
                 if (/UiRegionListBase_list__/.test(className)) {
@@ -64,6 +65,8 @@ const sleep = async (ms: number): Promise<void> => await new Promise(resolve => 
 
                 }
             })
+
+            console.log('regionULElement', regionULElement);
             if (regionULElement.length) {
                 const regionSelector = `li.${regionULElement[0]}:nth-child(${regionULElement[1]})`
                 await page.waitForSelector(regionSelector)
@@ -74,7 +77,7 @@ const sleep = async (ms: number): Promise<void> => await new Promise(resolve => 
         }
     }
 
-    await sleep(2000)
+    await sleep(4000)
 
 
     // Переход к странице товара
@@ -156,5 +159,5 @@ const sleep = async (ms: number): Promise<void> => await new Promise(resolve => 
         console.log('discountPrice', discountPrice)
     }
 
-    // await browser.close();
+    await browser.close();
 })();
