@@ -1,0 +1,22 @@
+{
+  "name": "vprok",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc -b",
+    "test1TS": "ts-node .\\src\\index.ts \"https://www.vprok.ru/product/bonfesto-bonf-syr-motsar-myag-12sh-45-100g--332748\" 'Санкт-Петербург и область'",
+    "test2TS": "ts-node .\\src\\index.ts \"https://www.vprok.ru/product/bonfesto-bonf-syr-motsar-myag-12sh-45-100g--332748\" 'Тульская обл.'"
+  },
+  "author": "dron84@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.7.9",
+    "@types/puppeteer": "^7.0.4",
+    "puppeteer": "^23.6.0",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  }
+}
